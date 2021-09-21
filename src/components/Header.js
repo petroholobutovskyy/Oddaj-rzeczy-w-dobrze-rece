@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Navigation from './Navigation';
 import herolImage from '../assets/HeroImage.png'
 
 export default function Header() {
@@ -10,19 +11,7 @@ export default function Header() {
                     <img src={herolImage}/>
                 </div>
                 <div className="header-right-bar">
-                    <nav className="nav-container">
-                        <div className="header-login">
-                            <Link to="/login" className="header-login-button">Zaloguj</Link>
-                            <Link to="/signup" className="header-login-button">Zaloz konto</Link>
-                        </div>
-                        <ul className="nav-list">
-                            <li className="nav-list-item"><a href="/">Start</a></li>
-                            <li className="nav-list-item"><a href="#single-steps-section">O co chodzi</a></li>
-                            <li className="nav-list-item"><a href="#about-us">O nas</a></li>
-                            <li className="nav-list-item"><a href="#">Fundacja i organizacje</a></li>
-                            <li className="nav-list-item"><a href="#contact-form">Kontakt</a></li>
-                        </ul>
-                    </nav>
+                    <Navigation/>
                     <div className="header-main-info">
                         <h1 className="header-main-header">Zacznij pomagać!
                             <br/> Oddaj niechciane rzeczy w zaufane ręce

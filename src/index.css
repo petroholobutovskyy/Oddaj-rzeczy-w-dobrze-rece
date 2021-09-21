@@ -379,3 +379,33 @@ align-self: flex-end;
      margin-right: 10px;
      color: black;
  }
+
+ .login-container {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     height: 700px;
+ }
+
+ .login-email {
+     /* padding: 30px; */
+ }
+
+ .login-form {
+     background-color: #F0F1F1;
+     margin-bottom: 40px;
+     padding-bottom: 50px;
+     display: inline-block;
+     padding: 40px 87px;
+     
+ }
+ .login-btns {
+     display: flex;
+     justify-content: space-between;
+ }
+
+ .signup-btn {
+     color: #000000;
+     font-size: 18px;
+     line-height: 32px;
+ }
