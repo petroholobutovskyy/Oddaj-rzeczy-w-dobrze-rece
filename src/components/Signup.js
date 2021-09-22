@@ -16,7 +16,7 @@ export default function Signup() {
             is: val => (val && val.length > 0 ? true : false),
             then: Yup.string().oneOf(
               [Yup.ref("password")],
-              "Both password need to be the same"
+              "Hasła musza być takie same"
             )
           })
     });
@@ -63,19 +63,25 @@ export default function Signup() {
                                 ) : null}
                                 </div>
                                 <div className="contact-label"><label for="password">Haslo</label>
-                                <input type="password"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.password}/>
+                                <input
+              type="password"
+              name="password"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={values.password}
+            />
                         {errors.password && touched.password ? (
                                     <div style={{color: "red"}}>{errors.password}</div>
                                 ) : null}
                                 </div>
                                 <div className="contact-label"><label for="password">Powtorz haslo</label>
-                        <input type="password"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.changepassword}/>
+                                <input
+              type="password"
+              name="changepassword"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={values.changepassword}
+            />
                         {errors.changepassword && touched.changepassword ? (
                                     <div style={{color: "red"}}>{errors.changepassword}</div>
                                 ) : null}
