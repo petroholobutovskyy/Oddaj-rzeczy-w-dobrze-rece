@@ -1,10 +1,28 @@
 
-import React, {useRef, useState} from "react";
+   
+import React, { useRef, useEffect, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+// import { auth, signInWithEmailAndPassword, signInWithGoogle } from "../firebase.js";
+// import { useAuthState } from "react-firebase-hooks/auth";
 import Navigation from "./Navigation";
 import * as Yup from "yup";
 import { Formik } from 'formik';
 
+
 export default function Login() {
+    // const [email, setEmail] = useState("");
+    // const [password, setPassword] = useState("");
+    // const [user, loading, error] = useAuthState(auth);
+    // const history = useHistory();
+  
+    // useEffect(() => {
+    //   if (loading) {
+    //     // maybe trigger a loading screen
+    //     return;
+    //   }
+    //   if (user) history.replace("/dashboard");
+    // }, [user, loading]);
+  
 
     const validationSchema = Yup.object().shape({
         email: Yup.string()

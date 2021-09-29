@@ -9,11 +9,13 @@ export default function ContactForm() {
 
     const API = "https://fer-api.coderslab.pl/v1/portfolio/contact";
 
-    const sendAPI = (e) => {
-        e.preventDefault;
+    const sendAPI = (values) => {
+        console.log(values);
         fetch(`${API}`, {
             method: "POST",
-            body: JSON.stringify(),
+            body: JSON.stringify(
+                values
+        ),
             headers: {
                 "Content-Type": "application/json"
             }
@@ -62,6 +64,7 @@ export default function ContactForm() {
                         alert(JSON.stringify(values, null, 2));
                         resetForm();
                         setSubmitting(false);
+                        sendAPI(values)
                     }, 500);
                 }}
             >
@@ -111,7 +114,7 @@ export default function ContactForm() {
                     <div className="contact-form-btn"><button
                     type="submit"
                     // onClick={handleSubmit}
-                    onClick={sendAPI}
+                    onClick={handleSubmit}
                     >Wyślij</button></div> 
                     </form>
                    </div>

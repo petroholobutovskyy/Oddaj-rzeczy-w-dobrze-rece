@@ -1,9 +1,34 @@
-import React, {useRef, useState} from 'react';
+
+import React, { useRef, useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Link, useHistory } from "react-router-dom";
+import {
+  auth,
+  registerWithEmailAndPassword,
+  signInWithGoogle,
+} from "../firebase"
 import Navigation from './Navigation';
 import * as Yup from "yup";
 import { Formik } from 'formik';
+// import app from '../firebase'
+import firebase from 'firebase/app'
 
 export default function Signup() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [user, loading, error] = useAuthState(auth);
+    const history = useHistory();
+  
+    const register = () => {
+
+      registerWithEmailAndPassword( email, password);
+    };
+  
+    useEffect(() => {
+      if (loading) return;
+      if (user) history.replace("/dashboard");
+    }, [user, loading]);
+   
 
     const validationSchema = Yup.object().shape({
         email: Yup.string()
@@ -57,7 +82,8 @@ export default function Signup() {
                         <input type="email" id="email"
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        value={values.email}/>
+                        value={values.email}
+                        onChange={(e) => setEmail(e.target.value)}/>
                         {errors.email && touched.email ? (
                                     <div style={{color: "red"}}>{errors.email}</div>
                                 ) : null}
@@ -68,6 +94,7 @@ export default function Signup() {
               name="password"
               onBlur={handleBlur}
               onChange={handleChange}
+              onChange={(e) => setPassword(e.target.value)}
               value={values.password}
             />
                         {errors.password && touched.password ? (
@@ -93,7 +120,10 @@ export default function Signup() {
                                 className="signup-btn" 
                                 style={{marginRight: "200px"}}
                                 >Zaloguj sie</a>
-                                <button type="submit" className="signup-btn" onClick={handleSubmit}>Zaloz konto</button>
+                                <button type="submit" className="signup-btn" 
+                                // onClick={handleSubmit}
+                                onClick={register}
+                                >Zaloz konto</button>
                             </div>
                         </div>
                         )}
