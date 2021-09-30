@@ -11,7 +11,7 @@ import Navigation from './Navigation';
 import * as Yup from "yup";
 import { Formik } from 'formik';
 // import app from '../firebase'
-import firebase from 'firebase/app'
+
 
 export default function Signup() {
     const [email, setEmail] = useState("");
@@ -83,10 +83,13 @@ export default function Signup() {
                         onChange={handleChange}
                         onBlur={handleBlur}
                         value={values.email}
+                        value={email}
                         onChange={(e) => setEmail(e.target.value)}/>
-                        {errors.email && touched.email ? (
+                       
+                        {!errors.email && touched.email ? (
                                     <div style={{color: "red"}}>{errors.email}</div>
                                 ) : null}
+                                
                                 </div>
                                 <div className="contact-label"><label for="password">Haslo</label>
                                 <input
@@ -94,10 +97,13 @@ export default function Signup() {
               name="password"
               onBlur={handleBlur}
               onChange={handleChange}
+            value={values.password}
+
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
-              value={values.password}
+              
             />
-                        {errors.password && touched.password ? (
+                        {!errors.password && touched.password ? (
                                     <div style={{color: "red"}}>{errors.password}</div>
                                 ) : null}
                                 </div>
@@ -109,7 +115,7 @@ export default function Signup() {
               onChange={handleChange}
               value={values.changepassword}
             />
-                        {errors.changepassword && touched.changepassword ? (
+                        {!errors.changepassword && touched.changepassword ? (
                                     <div style={{color: "red"}}>{errors.changepassword}</div>
                                 ) : null}
                                 </div>
@@ -121,7 +127,7 @@ export default function Signup() {
                                 style={{marginRight: "200px"}}
                                 >Zaloguj sie</a>
                                 <button type="submit" className="signup-btn" 
-                                // onClick={handleSubmit}
+                                onClick={handleSubmit}
                                 onClick={register}
                                 >Zaloz konto</button>
                             </div>
