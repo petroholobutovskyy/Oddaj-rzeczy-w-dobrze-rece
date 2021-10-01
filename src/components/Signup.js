@@ -74,7 +74,7 @@ export default function Signup() {
                        handleBlur,
                        handleSubmit,
                         }) => (
-                            <div className="login-container">
+                        <div className="login-container">
                         <h1>Zaloz konto</h1>
                         <div className="header-image"></div>
                         <form className="login-form">
@@ -86,7 +86,7 @@ export default function Signup() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}/>
                        
-                        {!errors.email && touched.email ? (
+                        {errors.email && touched.email ? (
                                     <div style={{color: "red"}}>{errors.email}</div>
                                 ) : null}
                                 
@@ -103,7 +103,7 @@ export default function Signup() {
               onChange={(e) => setPassword(e.target.value)}
               
             />
-                        {!errors.password && touched.password ? (
+                        {errors.password && touched.password ? (
                                     <div style={{color: "red"}}>{errors.password}</div>
                                 ) : null}
                                 </div>
@@ -115,7 +115,7 @@ export default function Signup() {
               onChange={handleChange}
               value={values.changepassword}
             />
-                        {!errors.changepassword && touched.changepassword ? (
+                        {errors.changepassword && touched.changepassword ? (
                                     <div style={{color: "red"}}>{errors.changepassword}</div>
                                 ) : null}
                                 </div>
